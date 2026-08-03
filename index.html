@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <header>
+
+        <h1>My Portfolio</h1>
+
+        <nav>
+            <a href="#introduction">Introduction</a>
+            <a href="#about">About</a>
+            <a href="#projects">Project</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="introduction">
+            <h2>Hi, I'm <span class="gradient-text">Shreyash Sharma</span></h2>
+            <p>B.Tech in Computer Science and Engineering at National Institute of Technology, Warangal.</p>
+            <p>Passionate about backend development, distributed systems, and solving complex DSA problems.</p>
+        </section>
+
+        <section id="about">
+            <h2>About Me</h2>
+            <h3>Education</h3>
+            <ul>
+                <li><strong>National Institute of Technology Warangal</strong> - B.Tech in Computer Science (2024 -
+                    2028)</li>
+                <li><strong>Adarsh Vidyalaya Mowa</strong> - CBSE Board (Class XII)</li>
+            </ul>
+            <br>
+            <h3>Technical Skills</h3>
+            <ul>
+                <li><strong>Languages:</strong> Java, C++, SQL</li>
+                <li><strong>Backend:</strong> Spring Boot, REST APIs, Hibernate</li>
+                <li><strong>Databases:</strong> PostgreSQL, Elasticsearch, Redis</li>
+                <li><strong>Core Concepts:</strong> Concurrency, Asynchronous Programming, JWT</li>
+            </ul>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="project-grid">
+                <article>
+                    <h3>Intelligent Product Search</h3>
+                    <p>Architected a dual-write e-commerce search engine using PostgreSQL and Elasticsearch for
+                        low-latency queries.</p>
+                    <br>
+                    <p><strong>Tech:</strong> Redis, BM25, Spring Boot</p>
+                </article>
+                <article>
+                    <h3>Data Extraction Platform</h3>
+                    <p>Built a high-throughput Java/Spring Boot data ingestion platform processing 10,000+
+                        executions/day.</p>
+                    <br>
+                    <p><strong>Tech:</strong> SHA-256, PostgreSQL, YAML</p>
+                </article>
+                <article>
+                    <h3>High-Performance Log Analyzer</h3>
+                    <p>Architected a multi-threaded log analysis pipeline in Java leveraging the Producer-Consumer
+                        pattern.</p>
+                    <br>
+                    <p><strong>Tech:</strong> CompletableFuture, ExecutorService</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <p>Email: shreyash2006sharma@gmail.com</p>
+            <p>LinkedIn: linkedin.com/in/shreyash-sharma-73aa0a374</p>
+            <br>
+            <form action="">
+                <label for="contact-name">Name:</label>
+                <input type="text" id="contact-name" name="contact-name" required>
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+
+    </footer>
+</body>
+
+</html>
