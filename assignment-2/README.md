@@ -147,42 +147,54 @@ You can use the following curl commands in a bash terminal (Git Bash or macOS/Li
 
 **1. Health Check (B1)**
 ```bash
-curl -i http://localhost:5000/
+curl -s http://localhost:5000/
+# Output: {"status":"ok"}
 ```
 
 **2. Get All Projects (B2)**
 ```bash
-curl -i http://localhost:5000/api/projects
+curl -s http://localhost:5000/api/projects
+# Output: [{"id":1,"title":"Intelligent Product Search System",...}, {"id":2,...}, {"id":3,...}]
 ```
 
 **3. Get Single Project - Valid (B3)**
 ```bash
-curl -i http://localhost:5000/api/projects/1
+curl -s http://localhost:5000/api/projects/1
+# Output: {"id":1,"title":"Intelligent Product Search System","description":"...","techStack":"...","link":"..."}
 ```
 
 **4. Get Single Project - Invalid 404 (B3 Failure)**
 ```bash
-curl -i http://localhost:5000/api/projects/999
+curl -s -i http://localhost:5000/api/projects/999
+# Output: HTTP/1.1 404 Not Found
+# {"error":"Project not found"}
 ```
 
 **5. Submit Contact Form - Valid (B4)**
 ```bash
-curl -i -X POST -H "Content-Type: application/json" -d "{\"name\":\"Test User\", \"email\":\"test@example.com\", \"message\":\"Hello!\"}" http://localhost:5000/api/contact
+curl -s -i -X POST -H "Content-Type: application/json" -d "{\"name\":\"Test User\", \"email\":\"test@example.com\", \"message\":\"Hello!\"}" http://localhost:5000/api/contact
+# Output: HTTP/1.1 201 Created
+# {"message":"Message received"}
 ```
 
 **6. Submit Contact Form - Invalid Email 400 (B4 Failure)**
 ```bash
-curl -i -X POST -H "Content-Type: application/json" -d "{\"name\":\"Test User\", \"email\":\"invalid_email_no_at_symbol\", \"message\":\"Hello!\"}" http://localhost:5000/api/contact
+curl -s -i -X POST -H "Content-Type: application/json" -d "{\"name\":\"Test User\", \"email\":\"invalid_email_no_at_symbol\", \"message\":\"Hello!\"}" http://localhost:5000/api/contact
+# Output: HTTP/1.1 400 Bad Request
+# {"error":"Bad email"}
 ```
 
 **7. Get All Contact Submissions (B5)**
 ```bash
-curl -i http://localhost:5000/api/contact
+curl -s http://localhost:5000/api/contact
+# Output: [{"name":"Test User","email":"test@example.com","message":"Hello!"}]
 ```
 
 **8. Trigger Global 404 Route (B6)**
 ```bash
-curl -i http://localhost:5000/api/doesnotexist
+curl -s -i http://localhost:5000/api/doesnotexist
+# Output: HTTP/1.1 404 Not Found
+# {"error":"Item not found"}
 ```
 
 ---
