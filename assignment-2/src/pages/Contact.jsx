@@ -6,15 +6,47 @@ export default function Contact() {
     const [email, setEmail] = useState("");
     const [message, setMessage] = useState("");
     const [submitted, setSubmitted] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState(null);
+
 
     const isFormValid = name.length > 0 && email.length > 0 && message.length > 0;
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setSubmitted(true);
-        setName("");
-        setEmail("");
-        setMessage("");
+        setIsLoading(true);
+        setError(null);
+        fetch("http://localhost:5000/api/contact", {
+            method: "POST",                   // 1. Tell it we are sending data
+            headers: {
+                "Content-Type": "application/json" // 2. Tell the server we are sending JSON
+            },
+            body: JSON.stringify({            // 3. Package up the data
+                name: name,
+                email: email,
+                message: message
+            })
+        })
+            .then(response => {
+                if (response.ok) {
+                    setSubmitted(true);
+                    setName("");
+                    setIsLoading(false)
+                    setEmail("");
+                    setMessage("");
+                }
+                else {
+                    return response.json().then(errorData => {
+                        throw new Error(errorData.error);
+                    });
+                }
+            })
+            .catch(error => {
+                setIsLoading(false);
+                setError(error.message);
+            })
+
+
     };
 
     return (
@@ -30,6 +62,9 @@ export default function Contact() {
                     Message sent! I'll get back to you soon.
                 </div>
             )}
+
+            {error && <p className="error-message" style={{color: "var(--primary-color)", marginBottom: "15px"}}>{error}</p>}
+            {isLoading && <p style={{marginBottom: "15px"}}>Sending message...</p>}
 
             <form onSubmit={handleSubmit}>
                 <div className="form-group">

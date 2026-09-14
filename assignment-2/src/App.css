@@ -284,6 +284,7 @@ section {
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   margin-top: 16px;
+  align-items: start;
 }
 
 /* ===== PROJECT CARD ===== */

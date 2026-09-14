@@ -119,7 +119,75 @@ The route `/projects/:id` uses a URL parameter. `PageDetails.jsx` reads it with 
 
 ---
 
-## Getting Started
+---
+
+## Assignment 3 — Backend Integration (Node.js/Express)
+
+### Backend Setup Instructions
+
+1. Navigate to the `server` directory: `cd server`
+2. Install backend dependencies: `npm install`
+3. Create a `.env` file based on `.env.example`: `cp .env.example .env` (or manually copy the contents)
+4. Start the server: `node server.js`
+5. The API will be available at `http://localhost:5000`
+
+### API Endpoints
+
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/` | Health check endpoint. Returns `{"status": "ok"}` |
+| GET | `/api/projects` | Returns a JSON array of all projects |
+| GET | `/api/projects/:id` | Returns details for a single project (404 if not found) |
+| POST | `/api/contact` | Submits a new contact form message (400 if invalid) |
+| GET | `/api/contact` | Returns a JSON array of all contact form submissions |
+
+### Testing Endpoints (curl Commands)
+
+You can use the following curl commands in a bash terminal (Git Bash or macOS/Linux) to test the 7 API requirements:
+
+**1. Health Check (B1)**
+```bash
+curl -i http://localhost:5000/
+```
+
+**2. Get All Projects (B2)**
+```bash
+curl -i http://localhost:5000/api/projects
+```
+
+**3. Get Single Project - Valid (B3)**
+```bash
+curl -i http://localhost:5000/api/projects/1
+```
+
+**4. Get Single Project - Invalid 404 (B3 Failure)**
+```bash
+curl -i http://localhost:5000/api/projects/999
+```
+
+**5. Submit Contact Form - Valid (B4)**
+```bash
+curl -i -X POST -H "Content-Type: application/json" -d "{\"name\":\"Test User\", \"email\":\"test@example.com\", \"message\":\"Hello!\"}" http://localhost:5000/api/contact
+```
+
+**6. Submit Contact Form - Invalid Email 400 (B4 Failure)**
+```bash
+curl -i -X POST -H "Content-Type: application/json" -d "{\"name\":\"Test User\", \"email\":\"invalid_email_no_at_symbol\", \"message\":\"Hello!\"}" http://localhost:5000/api/contact
+```
+
+**7. Get All Contact Submissions (B5)**
+```bash
+curl -i http://localhost:5000/api/contact
+```
+
+**8. Trigger Global 404 Route (B6)**
+```bash
+curl -i http://localhost:5000/api/doesnotexist
+```
+
+---
+
+## Getting Started (Frontend)
 
 ```bash
 # Install dependencies
